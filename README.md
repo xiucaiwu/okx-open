@@ -1,7 +1,7 @@
 # okx-open
 欧易-okx的开源项目，基于ruoyi-vue-plus开发，封装了okx的api，方便大家使用。
 
-前端项目地址：
+前端项目地址： https://github.com/chen-banxia/okx-open-ui
 
 开发环境：
     jdk17
