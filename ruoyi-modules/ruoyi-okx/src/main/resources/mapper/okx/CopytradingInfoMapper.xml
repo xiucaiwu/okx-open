@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dromara.okx.mapper.CopytradingInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="org.dromara.okx.domain.CopytradingInfo">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="unique_code" property="uniqueCode"/>
+        <result column="recom_index" property="recomIndex"/>
+        <result column="platform" property="platform"/>
+        <result column="create_by" property="createBy"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_by" property="updateBy"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="del_flag" property="delFlag"/>
+        <result column="tenant_id" property="tenantId"/>
+        <result column="create_dept" property="createDept"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id
+        , name, unique_code, recom_index, platform, create_by, create_time, update_by, update_time, del_flag, tenant_id, create_dept
+    </sql>
+    <select id="getFollowList" resultType="org.dromara.okx.domain.ClientUser" parameterType="java.lang.Long">
+        select *
+        from client_user
+        where id in
+              (select user_id from copytrading_info_follow cif where cif.copytrading_info_id = #{id,jdbcType=BIGINT})
+    </select>
+
+</mapper>

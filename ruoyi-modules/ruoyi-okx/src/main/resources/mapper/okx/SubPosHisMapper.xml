@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dromara.okx.mapper.SubPosHisMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="org.dromara.okx.domain.SubPosHis">
+        <id column="id" property="id"/>
+        <result column="inst_id" property="instId"/>
+        <result column="sub_pos_id" property="subPosId"/>
+        <result column="pos_side" property="posSide"/>
+        <result column="mgn_mode" property="mgnMode"/>
+        <result column="lever" property="lever"/>
+        <result column="open_avg_px" property="openAvgPx"/>
+        <result column="open_time" property="openTime"/>
+        <result column="open_time_date" property="openTimeDate"/>
+        <result column="sub_pos" property="subPos"/>
+        <result column="close_time" property="closeTime"/>
+        <result column="close_time_date" property="closeTimeDate"/>
+        <result column="close_avg_px" property="closeAvgPx"/>
+        <result column="pnl" property="pnl"/>
+        <result column="pnl_ratio" property="pnlRatio"/>
+        <result column="inst_type" property="instType"/>
+        <result column="margin" property="margin"/>
+        <result column="ccy" property="ccy"/>
+        <result column="unique_code" property="uniqueCode"/>
+        <result column="tenant_id" property="tenantId"/>
+        <result column="create_dept" property="createDept"/>
+        <result column="create_by" property="createBy"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_by" property="updateBy"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="del_flag" property="delFlag"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id
+        , inst_id, sub_pos_id, pos_side, mgn_mode, lever, open_avg_px, open_time, open_time_date, sub_pos, close_time, close_time_date, close_avg_px, pnl, pnl_ratio, inst_type, margin, ccy, unique_code, tenant_id, create_dept, create_by, create_time, update_by, update_time, del_flag
+    </sql>
+
+    <select id="selectNewRecord" resultType="org.dromara.okx.domain.SubPosHis">
+        select unique_code,
+               sub_pos_id,
+               close_time_date,
+               close_time
+        from (select unique_code,
+                     sub_pos_id,
+                     close_time_date,
+                     close_time,
+                     row_number() over(partition by unique_code
+    order by
+        close_time_date desc) as rn
+              from sub_pos_his sph
+              where del_flag = '0') as subquery
+        where rn = 1
+    </select>
+</mapper>
