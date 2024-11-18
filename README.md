@@ -27,5 +27,9 @@ api 介绍
     需要自己更改项目配置，获取自己的okx平台api的密钥，部署在国内服务器需要开启代理
 
 功能截图：
-    
+
+https://github.com/chen-banxia/okx-open/blob/main/images/%E5%BC%80%E4%BB%93.jpg
+
+https://github.com/chen-banxia/okx-open/blob/main/images/%E5%B9%B3%E4%BB%93.jpg
+
 管理平台的也搭建好了，自己启动查看
