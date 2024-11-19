@@ -23,6 +23,10 @@ api 介绍
     TradeApi     撮合交易/交易、策略交易
     CopyTradingApi   跟单
 
+部署：
+    sql位置：script/sql/dump-okx-202411191803.sql  只需要执行这一个sql就可以了
+    部署方式，可以docker脚本，也可以java -jar
+
 注意事项：
     需要自己更改项目配置，获取自己的okx平台api的密钥，部署在国内服务器需要开启代理
 
