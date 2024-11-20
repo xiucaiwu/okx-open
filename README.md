@@ -37,3 +37,4 @@ https://github.com/chen-banxia/okx-open/blob/main/images/%E5%BC%80%E4%BB%93.jpg
 https://github.com/chen-banxia/okx-open/blob/main/images/%E5%B9%B3%E4%BB%93.jpg
 
 管理平台的也搭建好了，自己启动查看
+部署参考: https://plus-doc.dromara.org/#/ruoyi-vue-plus/quickstart/deploy
